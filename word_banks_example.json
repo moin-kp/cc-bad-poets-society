@@ -1,0 +1,69 @@
+{
+  "description": "Example word banks that can be loaded into the poem generator. You can extend these or create your own themed word banks.",
+  "nouns": {
+    "nature": [
+      "moon", "star", "sun", "cloud", "rain", "wind", "storm", "thunder",
+      "ocean", "river", "lake", "wave", "mountain", "hill", "valley",
+      "tree", "flower", "leaf", "grass", "forest", "meadow", "garden"
+    ],
+    "emotions": [
+      "heart", "soul", "spirit", "feeling", "emotion", "passion", "desire",
+      "hope", "fear", "joy", "sorrow", "love", "pain", "longing", "dream"
+    ],
+    "time": [
+      "moment", "hour", "day", "night", "dawn", "dusk", "morning", "evening",
+      "time", "memory", "past", "future", "present", "eternity", "instant"
+    ],
+    "abstract": [
+      "truth", "beauty", "wisdom", "knowledge", "mystery", "wonder", "magic",
+      "freedom", "peace", "chaos", "order", "light", "shadow", "darkness"
+    ]
+  },
+  "verbs": {
+    "movement": [
+      "dances", "flows", "flies", "falls", "rises", "drifts", "wanders",
+      "travels", "journeys", "moves", "shifts", "turns", "spins"
+    ],
+    "emotion": [
+      "loves", "hates", "fears", "hopes", "dreams", "longs", "yearns",
+      "cries", "laughs", "smiles", "weeps", "rejoices", "mourns"
+    ],
+    "nature": [
+      "grows", "blooms", "withers", "fades", "shines", "glows", "burns",
+      "freezes", "melts", "awakens", "sleeps", "breathes", "lives"
+    ],
+    "sound": [
+      "whispers", "sings", "shouts", "calls", "echoes", "resonates",
+      "speaks", "says", "tells", "screams", "sighs", "murmurs"
+    ]
+  },
+  "adjectives": {
+    "appearance": [
+      "bright", "dark", "pale", "vivid", "dull", "shiny", "glowing",
+      "radiant", "dim", "brilliant", "faded", "clear", "opaque"
+    ],
+    "emotion": [
+      "gentle", "wild", "calm", "fierce", "tender", "harsh", "soft",
+      "hard", "warm", "cold", "passionate", "peaceful", "angry"
+    ],
+    "size": [
+      "tiny", "huge", "vast", "small", "large", "endless", "infinite",
+      "boundless", "limitless", "immense", "minute", "gigantic"
+    ],
+    "time": [
+      "ancient", "young", "old", "new", "eternal", "temporary", "brief",
+      "lasting", "fleeting", "permanent", "timeless", "momentary"
+    ],
+    "state": [
+      "broken", "whole", "empty", "full", "lost", "found", "free",
+      "bound", "open", "closed", "hidden", "visible", "clear"
+    ]
+  },
+  "adverbs": [
+    "slowly", "quickly", "softly", "loudly", "gently", "wildly",
+    "silently", "brightly", "darkly", "deeply", "lightly", "heavily",
+    "carefully", "carelessly", "gracefully", "clumsily", "smoothly", "roughly"
+  ],
+  "notes": "You can extend the poem generator to load word banks from this JSON file, or create themed word banks for different poem styles (e.g., nature poems, love poems, etc.)"
+}
+

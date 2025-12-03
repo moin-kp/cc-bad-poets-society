@@ -1,0 +1,11 @@
+# Bad Poets Society - Poem Generator
+# Python dependencies
+
+# No external dependencies required for basic functionality
+# The generator uses only Python standard library
+
+# Optional dependencies for enhanced features:
+# numpy>=1.21.0  # For advanced random distributions
+# nltk>=3.6      # For natural language processing features
+# spacy>=3.0     # For advanced NLP (if extending the generator)
+
