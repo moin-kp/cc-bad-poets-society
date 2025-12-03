@@ -12,22 +12,6 @@ This poem generator is part of a Computational Creativity assignment exploring h
 - No external dependencies required (uses only Python standard library)
 - Optional: pip for package management (if you want to extend functionality)
 
-## Installation
-
-1. Clone or download this repository
-2. Navigate to the project directory:
-   ```bash
-   cd csr
-   ```
-
-3. (Optional) Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-4. No additional packages need to be installed for basic functionality.
-
 ## Usage
 
 ### Basic Usage
@@ -82,20 +66,6 @@ generator = PoemGenerator()
 # Generate a specific style
 poem = generator.generate_poem("free_verse", num_lines=10)
 print(generator.format_poem(poem))
-```
-
-## Project Structure
-
-```
-csr/
-├── src/
-│   └── poem_generator.py    # Main generator implementation
-├── data/                     # Data files (word banks, templates, etc.)
-├── output/                   # Generated poems
-├── docs/                     # Documentation and logbook
-├── requirements.txt          # Python dependencies
-├── README.md                 # This file
-└── assignment-instructions.txt
 ```
 
 ## How It Works
@@ -165,18 +135,11 @@ Potential improvements:
 - Machine learning approaches for style learning
 - User-defined word banks and templates
 
-## License
-
-This project is created for educational purposes as part of a Computational Creativity course assignment.
-
-## Author
-
-Created for the Bad Poets Society assignment - Computational Creativity course.
-
 ## Notes
 
 - The generator uses random selection, so each run produces different poems
 - Set a seed for reproducibility: `PoemGenerator(seed=42)`
 - The syllable counting in haikus is approximate and not strictly enforced
 - Rhyme schemes in quatrains are conceptual (actual rhyming not implemented)
+
 
