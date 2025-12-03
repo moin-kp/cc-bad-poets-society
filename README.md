@@ -4,7 +4,7 @@ A computational creativity project that generates poetry using template-based an
 
 ## Project Overview
 
-This poem generator is part of a Computational Creativity assignment exploring how computational systems can create artistic content. The generator uses templates and grammar rules to produce original poetry by combining words from curated word banks.
+This poem generator explores how computational systems can create artistic content. The generator uses templates and grammar rules to produce original poetry by combining words from curated word banks.
 
 
 ## Usage
@@ -136,6 +136,7 @@ Potential improvements:
 - Set a seed for reproducibility: `PoemGenerator(seed=42)`
 - The syllable counting in haikus is approximate and not strictly enforced
 - Rhyme schemes in quatrains are conceptual (actual rhyming not implemented)
+
 
 
 
