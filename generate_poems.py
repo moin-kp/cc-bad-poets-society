@@ -1,6 +1,5 @@
 """
-Simple script to generate poems and save them to the output directory.
-Run this script to generate sample poems for your assignment.
+A poem generator that saves them to the output directory.
 """
 
 from poem_generator import PoemGenerator
@@ -9,7 +8,7 @@ import os
 def main():
     """Generate multiple poems in different styles."""
     
-    # Ensure output directory exists (handle path whether running from src/ or root)
+    # Ensure output directory exists (handle path whether running from root)
     output_dir = "output" if os.path.exists("output") or not os.path.exists("src") else "../output"
     os.makedirs(output_dir, exist_ok=True)
     
@@ -74,4 +73,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
