@@ -94,10 +94,11 @@ poem3 = generator.generate_poem("haiku")  # Same as poem1
 3. Generate poems and use Generative AI tools to present them
 4. Extend the generator with your own templates and word banks
 
-## Need Help?
+## Acquire More Info
 
-- Check `src/poem_generator.py` for the full implementation
+- Check `poem_generator.py` for the full implementation
 - See `output/` directory for example generated poems
-- Review `data/word_banks_example.json` for word bank ideas
+- Review `word_banks_example.json` for word bank ideas
+
 
 
