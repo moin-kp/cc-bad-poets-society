@@ -4,10 +4,10 @@
 
 ### 1. Generate Your First Poem
 
-From the project root directory (`csr/`), run:
+From the project root directory run:
 
 ```bash
-python src/poem_generator.py
+python poem_generator.py
 ```
 
 This will generate sample poems in all styles and save 3 examples to the `output/` directory.
@@ -17,7 +17,7 @@ This will generate sample poems in all styles and save 3 examples to the `output
 To generate a collection of poems:
 
 ```bash
-python src/generate_poems.py
+python generate_poems.py
 ```
 
 This creates 7 different poems and saves them all to `output/`, plus a combined file.
@@ -90,7 +90,7 @@ poem3 = generator.generate_poem("haiku")  # Same as poem1
 ## Next Steps
 
 1. Read the full [README.md](README.md) for detailed documentation
-2. Check out the [logbook template](docs/logbook_template.md) for documenting your process
+2. Check out the [logbook template](logbook_template.md) for documenting your process
 3. Generate poems and use Generative AI tools to present them
 4. Extend the generator with your own templates and word banks
 
@@ -99,4 +99,5 @@ poem3 = generator.generate_poem("haiku")  # Same as poem1
 - Check `src/poem_generator.py` for the full implementation
 - See `output/` directory for example generated poems
 - Review `data/word_banks_example.json` for word bank ideas
+
 
