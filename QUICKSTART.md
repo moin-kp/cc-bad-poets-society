@@ -25,7 +25,7 @@ This creates 7 different poems and saves them all to `output/`, plus a combined 
 ### 3. Use in Your Own Code
 
 ```python
-from src.poem_generator import PoemGenerator
+from poem_generator import PoemGenerator
 
 # Create generator
 generator = PoemGenerator()
@@ -99,6 +99,7 @@ poem3 = generator.generate_poem("haiku")  # Same as poem1
 - Check `poem_generator.py` for the full implementation
 - See `output/` directory for example generated poems
 - Review `word_banks_example.json` for word bank ideas
+
 
 
 
