@@ -6,11 +6,6 @@ A computational creativity project that generates poetry using template-based an
 
 This poem generator is part of a Computational Creativity assignment exploring how computational systems can create artistic content. The generator uses templates and grammar rules to produce original poetry by combining words from curated word banks.
 
-## System Requirements
-
-- **Python 3.7 or higher**
-- No external dependencies required (uses only Python standard library)
-- Optional: pip for package management (if you want to extend functionality)
 
 ## Usage
 
@@ -19,7 +14,7 @@ This poem generator is part of a Computational Creativity assignment exploring h
 Run the generator with the example script:
 
 ```bash
-python src/poem_generator.py
+python poem_generator.py
 ```
 
 This will generate sample poems in all available styles and save three examples to the `output/` directory.
@@ -27,7 +22,7 @@ This will generate sample poems in all available styles and save three examples 
 ### Using the Generator in Your Code
 
 ```python
-from src.poem_generator import PoemGenerator
+from poem_generator import PoemGenerator
 
 # Create a generator instance
 generator = PoemGenerator(seed=42)  # Optional: set seed for reproducibility
@@ -59,7 +54,7 @@ generator.save_poem(free_verse, "output/my_poem.txt")
 You can also use the generator interactively:
 
 ```python
-from src.poem_generator import PoemGenerator
+from poem_generator import PoemGenerator
 
 generator = PoemGenerator()
 
@@ -141,5 +136,6 @@ Potential improvements:
 - Set a seed for reproducibility: `PoemGenerator(seed=42)`
 - The syllable counting in haikus is approximate and not strictly enforced
 - Rhyme schemes in quatrains are conceptual (actual rhyming not implemented)
+
 
 
