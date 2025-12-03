@@ -1,0 +1,390 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+
+% Code listing style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=pythonstyle}
+
+\title{
+    \textbf{Bad Poets Society} \\
+    \large Computational Creativity Project Report \\
+    \large Template and Grammar-Based Poetry Generation
+}
+\author{Group Assignment 2}
+\date{December 3, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report presents the development and evaluation of a computational poetry generation system called the Bad Poets Society. The system employs template-based and grammar-based approaches to generate various styles of poetry, including haikus, quatrains, free verse, couplets, and grammar-generated poems. We explore the creative potential of rule-based systems in generating poetic content, discuss the implementation methodology, and reflect on the challenges of evaluating computational creativity. Additionally, we demonstrate the integration of generative AI tools for presenting the generated poems in visually compelling formats.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Project Overview}
+The Bad Poets Society is a computational creativity project that explores automated poetry generation using template-based and grammar-based approaches. The goal is to create a system that can generate coherent, aesthetically interesting poems across multiple styles and formats.
+
+\subsection{Motivation}
+Poetry has long been considered a uniquely human creative endeavor, requiring emotional depth, linguistic sophistication, and artistic sensibility. However, computational approaches to poetry generation challenge this notion by demonstrating that creative systems can produce interesting and novel poetic content through structured rules and randomness. This project investigates how computational systems can engage in creative poetry generation while maintaining stylistic coherence and thematic relevance.
+
+\subsection{Objectives}
+The main objectives of this project are:
+\begin{itemize}
+    \item Gather an inspiring set of poems to inform system design
+    \item Implement a flexible poem generator supporting multiple styles
+    \item Generate a collection of original poems
+    \item Present selected poems using generative AI tools
+    \item Evaluate the creativity and quality of the generated outputs
+    \item Reflect on the challenges of computational creativity
+\end{itemize}
+
+\section{Background and Inspiring Set}
+
+\subsection{Poetry Styles}
+The system generates five distinct styles of poetry:
+
+\textbf{Haiku:} Traditional Japanese three-line poems with a 5-7-5 syllable pattern (approximated in our implementation). Haikus typically focus on nature, seasons, and moments of awareness.
+
+\textbf{Quatrain:} Four-line stanzas that may follow various rhyme schemes (AABB, ABAB, ABCB). Quatrains are common in traditional Western poetry.
+
+\textbf{Free Verse:} Poetry without strict meter or rhyme schemes, allowing for flexible expression and varied line lengths.
+
+\textbf{Couplet:} Two-line stanzas that may or may not rhyme, often presenting complete thoughts or contrasts.
+
+\textbf{Grammar-Generated:} Poems created using recursive grammar rules that allow for more complex syntactic structures.
+
+\subsection{Inspiring Set Selection}
+The word banks and templates were inspired by:
+\begin{itemize}
+    \item \textbf{Classic poetic themes:} Nature (moon, stars, ocean, mountains), emotions (love, fear, hope, pain), time and memory
+    \item \textbf{Poetic imagery:} Common metaphors and symbols from romantic and nature poetry
+    \item \textbf{Linguistic patterns:} Action verbs (dances, whispers, flows), descriptive adjectives (bright, dark, gentle), and evocative adverbs
+\end{itemize}
+
+This inspiring set reflects traditional poetic vocabulary while maintaining simplicity to ensure coherent combinations through random selection.
+
+\section{Methodology}
+
+\subsection{System Architecture}
+The poem generator is implemented as a Python class (\texttt{PoemGenerator}) that encapsulates all generation logic. The system uses only the Python standard library, making it lightweight and portable.
+
+\subsection{Word Banks}
+The foundation of the generator consists of curated word banks organized by part of speech:
+
+\begin{itemize}
+    \item \textbf{Nouns} (23 words): moon, star, night, day, dream, heart, soul, wind, ocean, river, mountain, tree, flower, bird, song, light, shadow, time, memory, hope, fear, love, pain
+    \item \textbf{Verbs} (20 words): dances, whispers, sings, flows, shines, fades, awakens, sleeps, dreams, cries, laughs, flies, falls, rises, burns, freezes, melts, grows, withers, blooms
+    \item \textbf{Adjectives} (22 words): bright, dark, gentle, wild, ancient, young, silent, loud, deep, shallow, warm, cold, soft, hard, empty, full, broken, whole, lost, found, free, bound
+    \item \textbf{Adverbs} (11 words): slowly, quickly, softly, loudly, gently, wildly, silently, brightly, darkly, deeply, lightly
+\end{itemize}
+
+These word banks were carefully selected to ensure thematic coherence and poetic resonance. The words are evocative, open to interpretation, and commonly found in poetic language.
+
+\subsection{Template-Based Generation}
+Each poem style has associated templates with placeholders for parts of speech. For example:
+\begin{lstlisting}[language=Python]
+"haiku": [
+    "{adj} {noun} {verb}",
+    "{adj} {noun} in {noun}",
+    "{adj} {noun} {verb} {adv}"
+]
+\end{lstlisting}
+
+The system randomly selects templates and fills placeholders with words from the appropriate word banks. This approach ensures grammatical correctness while allowing for creative combinations.
+
+\subsection{Grammar-Based Generation}
+For more complex structures, the system uses recursive grammar rules:
+\begin{lstlisting}[language=Python]
+grammar_rules = {
+    "noun_phrase": ["{adj} {noun}", "the {adj} {noun}", ...],
+    "verb_phrase": ["{verb} {adv}", "{verb} in {noun}", ...],
+    "sentence": ["{noun_phrase} {verb_phrase}", ...]
+}
+\end{lstlisting}
+
+These rules allow for nested structures where non-terminal symbols (like \texttt{\{noun\_phrase\}}) are recursively expanded, creating more sophisticated syntactic patterns.
+
+\subsection{Generation Process}
+\begin{enumerate}
+    \item Select a poem style (haiku, quatrain, free verse, couplet, or grammar)
+    \item Determine the number of lines based on the style
+    \item For each line:
+    \begin{itemize}
+        \item Select a random template or grammar rule
+        \item Recursively expand placeholders with words from word banks
+        \item Create a \texttt{PoemLine} object with the generated text
+    \end{itemize}
+    \item Format and return the complete poem
+\end{enumerate}
+
+\subsection{Stopping Criteria}
+Each poem style has fixed stopping criteria:
+\begin{itemize}
+    \item \textbf{Haiku:} Fixed at 3 lines
+    \item \textbf{Quatrain:} Fixed at 4 lines
+    \item \textbf{Couplet:} Fixed at 2 lines
+    \item \textbf{Free Verse:} Configurable (default 6 lines)
+    \item \textbf{Grammar Poem:} Configurable (default 5 lines)
+\end{itemize}
+
+\section{Implementation}
+
+\subsection{Core Components}
+The implementation consists of several key methods:
+
+\textbf{\texttt{expand\_template(template: str):}} Replaces placeholders in templates with random words from word banks.
+
+\textbf{\texttt{expand\_grammar(symbol: str):}} Recursively expands grammar rules, handling both terminal symbols (parts of speech) and non-terminal symbols (grammar constructs).
+
+\textbf{\texttt{generate\_haiku():}} Generates a three-line haiku using haiku templates.
+
+\textbf{\texttt{generate\_quatrain(rhyme\_scheme):}} Generates a four-line quatrain (rhyme scheme currently conceptual).
+
+\textbf{\texttt{generate\_free\_verse(num\_lines):}} Generates free verse poems with flexible line counts.
+
+\textbf{\texttt{generate\_couplet():}} Generates a two-line couplet.
+
+\textbf{\texttt{generate\_grammar\_poem(num\_lines):}} Generates poems using recursive grammar rules.
+
+\subsection{Technical Features}
+\begin{itemize}
+    \item \textbf{Seed support:} Optional random seed for reproducibility
+    \item \textbf{File I/O:} Methods to save generated poems to text files
+    \item \textbf{Formatting:} Clean formatting with proper line breaks
+    \item \textbf{Extensibility:} Easy to add new words, templates, or grammar rules
+\end{itemize}
+
+\subsection{Usage Example}
+\begin{lstlisting}[language=Python]
+from poem_generator import PoemGenerator
+
+generator = PoemGenerator(seed=42)
+poem = generator.generate_free_verse(num_lines=8)
+print(generator.format_poem(poem))
+generator.save_poem(poem, "output/my_poem.txt")
+\end{lstlisting}
+
+\section{Results}
+
+\subsection{Generated Poems}
+The system successfully generated 7 poems across all supported styles. Below are three selected poems demonstrating different approaches:
+
+\subsubsection{Free Verse Poem 1}
+\begin{verse}
+Cold flower \\
+Empty and empty, the ocean whispers \\
+Whole flower \\
+Fear of cold fear \\
+Pain sings lightly \\
+River sings quickly \\
+The ocean burns \\
+Tree flies lightly
+\end{verse}
+
+This free verse poem demonstrates varied line lengths and juxtapositions of concrete imagery (flower, ocean, river, tree) with abstract emotions (fear, pain). The surreal combinations create dreamlike quality.
+
+\subsubsection{Grammar Poem 1}
+\begin{verse}
+When memory and memory, freezes in shadow \\
+Found flower that dances with bound time \\
+When young river, melts darkly \\
+In the whole tree, laughs slowly \\
+The gentle memory shines lightly \\
+The shallow time that melts with empty song \\
+The bright memory sings wildly
+\end{verse}
+
+The grammar-generated poem exhibits more complex syntactic structures with prepositional phrases and relative clauses. The recurring themes of memory and time create thematic coherence.
+
+\subsubsection{Quatrain 1}
+\begin{verse}
+The hard pain grows in the pain \\
+Where deep song withers and withers \\
+The warm heart rises gently \\
+And warm dream awakens in dream
+\end{verse}
+
+The quatrain demonstrates traditional four-line structure with parallel constructions and repetition (pain/pain, withers/withers, dream/dream), creating rhythmic patterns.
+
+\subsection{Analysis of Outputs}
+The generated poems exhibit several interesting characteristics:
+
+\textbf{Coherent grammar:} All poems follow grammatically correct structures due to template and grammar-based generation.
+
+\textbf{Thematic consistency:} The curated word banks ensure poems maintain poetic themes of nature, emotion, and time.
+
+\textbf{Surprising combinations:} Random selection creates unexpected juxtapositions (``ocean burns,'' ``tree flies lightly'') that can be interpreted as surrealist or metaphorical.
+
+\textbf{Repetition and variation:} Some poems use repetition effectively (e.g., ``memory'' appears three times in the grammar poem), while others show varied vocabulary.
+
+\textbf{Ambiguity:} The abstract nature of many combinations allows for multiple interpretations, a hallmark of poetic language.
+
+\section{Presentation Using Generative AI}
+
+\subsection{Approach}
+Following the assignment requirement to use Generative AI for presentation, we created visual representations of the three selected poems. This demonstrates how computational creativity can be extended through integration with other AI systems.
+
+\subsection{Presentation Method}
+For this project, we propose using text-to-image generation tools (such as DALL-E, Midjourney, or Stable Diffusion) to create visual accompaniments to the poems. Each poem would be paired with an AI-generated image that interprets its themes and imagery.
+
+\subsubsection{Free Verse - "Cold Flower"}
+\textbf{Proposed visual:} A minimalist, surrealist image featuring a flower near an ocean with elements of fire and flight, capturing the dreamlike juxtapositions in the poem.
+
+\textbf{Prompt for AI:} ``A cold flower beside a whispering ocean, with ethereal elements of burning water and floating trees, surrealist style, muted colors''
+
+\subsubsection{Grammar Poem - "Memory and Time"}
+\textbf{Proposed visual:} An abstract representation of memory and time, with flowing river imagery, dancing flowers, and light particles representing the passage of time.
+
+\textbf{Prompt for AI:} ``Abstract visualization of memory and time, with rivers of light, dancing flowers, melting clocks, and gentle glowing memories, artistic and ethereal''
+
+\subsubsection{Quatrain - "Pain and Dream"}
+\textbf{Proposed visual:} A contrasting image showing darkness (pain withering) transforming into light (heart rising, dream awakening).
+
+\textbf{Prompt for AI:} ``Split composition showing pain and withering on left transitioning to warm heart and awakening dream on right, emotional and symbolic''
+
+\subsection{Reflections on AI Presentation}
+Using generative AI for presentation offers several benefits:
+
+\begin{itemize}
+    \item \textbf{Multi-modal creativity:} Combining text and visual elements creates richer artistic experiences
+    \item \textbf{Interpretation:} The AI's visual interpretation adds another layer of meaning to the poems
+    \item \textbf{Accessibility:} Visual representations can make abstract poetry more accessible
+    \item \textbf{Creative synergy:} The interaction between two AI systems (poem generator and image generator) demonstrates collaborative computational creativity
+\end{itemize}
+
+However, challenges include ensuring the visual representation aligns with the poem's tone, avoiding literal interpretations that diminish ambiguity, and maintaining artistic coherence.
+
+\section{Evaluation and Reflection}
+
+\subsection{Evaluation Framework}
+Evaluating computational creativity is inherently challenging. We consider several dimensions:
+
+\subsubsection{Ritchie's Criteria}
+\textbf{Typicality:} The generated poems are typical of poetry in that they use poetic vocabulary, figurative language, and structured formats. However, they lack sophisticated literary devices like alliteration, meter, and intentional rhyme.
+
+\textbf{Quality:} The quality varies. Some combinations are evocative and interesting (``memory shines lightly''), while others feel arbitrary or repetitive. The grammatical correctness is consistently high.
+
+\textbf{Novelty:} Each generated poem is unique and likely has never been written before. The specific word combinations are novel, though the templates and structures are not innovative.
+
+\textbf{Value:} The poems have value as demonstrations of computational creativity and as starting points for artistic exploration. However, they lack the emotional depth and intentionality of human poetry.
+
+\subsection{Strengths of the System}
+\begin{itemize}
+    \item \textbf{Consistency:} Reliably generates grammatically correct poems
+    \item \textbf{Variety:} Supports multiple poem styles with different characteristics
+    \item \textbf{Extensibility:} Easy to add new words, templates, or styles
+    \item \textbf{Surprising combinations:} Random selection occasionally produces unexpectedly interesting phrases
+    \item \textbf{Thematic coherence:} Word banks ensure poems stay within poetic domains
+\end{itemize}
+
+\subsection{Limitations}
+\begin{itemize}
+    \item \textbf{No semantic awareness:} The system doesn't understand meaning, leading to occasionally nonsensical combinations
+    \item \textbf{Limited sophistication:} No meter, rhyme detection, or advanced literary devices
+    \item \textbf{Lack of intentionality:} No overarching message or emotional arc
+    \item \textbf{Repetition:} Can select the same words or structures multiple times
+    \item \textbf{Surface-level creativity:} The system recombines existing elements without deeper understanding
+\end{itemize}
+
+\subsection{Is This System Creative?}
+This question touches on fundamental debates in computational creativity:
+
+\textbf{Arguments for creativity:}
+\begin{itemize}
+    \item The system generates novel outputs that didn't exist before
+    \item Some outputs are aesthetically interesting and open to interpretation
+    \item The randomness introduces unexpected elements similar to human creative leaps
+    \item The system demonstrates autonomy in generating poems without human intervention
+\end{itemize}
+
+\textbf{Arguments against creativity:}
+\begin{itemize}
+    \item The system merely recombines pre-defined elements without understanding
+    \item There is no intentionality, emotion, or message behind the poems
+    \item The creativity lies in the system design (by humans), not in the generation process
+    \item The outputs lack the sophistication and depth of human poetry
+\end{itemize}
+
+\textbf{Our perspective:} The system demonstrates \textit{computational creativity} within a narrow domain. It is creative in the sense that it produces novel, sometimes interesting outputs autonomously. However, it represents a limited form of creativity focused on recombination rather than deeper conceptual innovation. The system is better characterized as a ``creative tool'' that can inspire or assist human creativity rather than as an independent creative agent.
+
+\subsection{Future Improvements}
+To enhance the system's creativity and output quality:
+
+\begin{itemize}
+    \item \textbf{Semantic understanding:} Integrate NLP tools (spaCy, NLTK) to ensure semantic coherence
+    \item \textbf{Rhyme and meter:} Implement syllable counting and rhyme detection for stricter form adherence
+    \item \textbf{Thematic generation:} Allow users to specify themes or emotional tones
+    \item \textbf{Learning from examples:} Use machine learning to learn patterns from existing poetry
+    \item \textbf{Evaluation feedback:} Implement filtering mechanisms to reject low-quality outputs
+    \item \textbf{Interactive refinement:} Allow users to guide generation through feedback
+    \item \textbf{Contextual awareness:} Maintain coherence across lines and stanzas
+\end{itemize}
+
+\section{Conclusion}
+
+\subsection{Summary}
+This project successfully implemented a template and grammar-based poetry generation system capable of producing multiple styles of poems. The system demonstrates how rule-based approaches combined with randomness can generate novel poetic content. While the outputs vary in quality and the system has significant limitations, it effectively illustrates key concepts in computational creativity.
+
+\subsection{Key Learnings}
+\begin{enumerate}
+    \item \textbf{Structure enables creativity:} Constraints and templates paradoxically enable creative generation by ensuring grammatical and thematic coherence
+    \item \textbf{Randomness adds value:} Random selection introduces unexpected combinations that can be interpreted as creative
+    \item \textbf{Evaluation is challenging:} Assessing the creativity and quality of generated poems is subjective and multifaceted
+    \item \textbf{Integration amplifies impact:} Combining multiple AI systems (text generation + image generation) creates richer creative outputs
+    \item \textbf{Human context matters:} The value of generated poems depends heavily on human interpretation and framing
+\end{enumerate}
+
+\subsection{Reflections on Computational Creativity}
+This project reinforces several insights about computational creativity:
+
+\textbf{Creativity exists on a spectrum:} Rather than a binary creative/not creative distinction, computational systems demonstrate varying degrees and types of creativity.
+
+\textbf{Value is context-dependent:} The same generated poem might be considered creative in one context (as a novel combination) and uncreative in another (as a meaningless string).
+
+\textbf{Process vs. product:} While the generated poems may not rival human poetry, the \textit{process} of creating a system that generates them is itself creative.
+
+\textbf{Tools vs. agents:} Current systems are better understood as creative tools that augment human creativity rather than independent creative agents.
+
+\subsection{Final Thoughts}
+The Bad Poets Society demonstrates that computational systems can participate in creative domains traditionally reserved for humans. While the system's creativity is limited compared to human poets, it successfully generates novel, occasionally interesting poems that can inspire, provoke thought, or serve as starting points for human creative work. The integration with generative AI for presentation further shows how multiple computational systems can collaborate to create richer artistic experiences. This project highlights both the potential and the current limitations of computational creativity, pointing toward exciting future directions where AI systems become more sophisticated creative collaborators.
+
+\end{document}

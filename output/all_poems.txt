@@ -1,0 +1,57 @@
+Bad Poets Society - Generated Poems Collection
+==================================================
+
+HAIKU 1 (haiku)
+----------------------------------------
+Bright fear flows
+Ancient wind in wind
+Gentle love grows deeply
+
+HAIKU 2 (haiku)
+----------------------------------------
+Bright bird whispers
+Broken soul in soul
+Silent moon grows lightly
+
+QUATRAIN 1 (quatrain)
+----------------------------------------
+The hard pain grows in the pain
+Where deep song withers and withers
+The warm heart rises gently
+And warm dream awakens in dream
+
+FREE VERSE 1 (free_verse)
+----------------------------------------
+Cold flower
+Empty and empty, the ocean whispers
+Whole flower
+Fear of cold fear
+Pain sings lightly
+River sings quickly
+The ocean burns
+Tree flies lightly
+
+FREE VERSE 2 (free_verse)
+----------------------------------------
+In the found pain
+Time sleeps brightly
+The ocean grows
+In the dark star
+The ocean sings
+When mountain meets mountain
+
+COUPLET 1 (couplet)
+----------------------------------------
+The ancient flower burns in flower
+And whole dream sleeps darkly
+
+GRAMMAR POEM 1 (grammar)
+----------------------------------------
+When memory and memory, freezes in shadow
+Found flower that dances with bound time
+When young river, melts darkly
+In the whole tree, laughs slowly
+The gentle memory shines lightly
+The shallow time that melts with empty song
+The bright memory sings wildly
+
