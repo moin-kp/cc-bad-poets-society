@@ -103,43 +103,37 @@ class PoemGenerator:
     def _expand_template(self, template: str) -> str:
         """Expand a template string by replacing placeholders with random words."""
         result = template
-        
-        # Replace placeholders
-        result = result.replace("{noun}", random.choice(self.nouns))
-        result = result.replace("{verb}", random.choice(self.verbs))
-        result = result.replace("{adj}", random.choice(self.adjectives))
-        result = result.replace("{adv}", random.choice(self.adverbs))
-        
-        # Handle recursive replacements (e.g., {noun} in {noun})
+
+        # Replace placeholders one at a time to avoid repetition
         while "{" in result:
-            result = result.replace("{noun}", random.choice(self.nouns))
-            result = result.replace("{verb}", random.choice(self.verbs))
-            result = result.replace("{adj}", random.choice(self.adjectives))
-            result = result.replace("{adv}", random.choice(self.adverbs))
-        
+            result = result.replace("{noun}", random.choice(self.nouns), 1)
+            result = result.replace("{verb}", random.choice(self.verbs), 1)
+            result = result.replace("{adj}", random.choice(self.adjectives), 1)
+            result = result.replace("{adv}", random.choice(self.adverbs), 1)
+
         return result.capitalize()
     
     def _expand_grammar(self, rule_type: str) -> str:
         """Expand a grammar rule recursively."""
         if rule_type not in self.grammar_rules:
             return ""
-        
+
         template = random.choice(self.grammar_rules[rule_type])
         result = template
-        
+
         # Recursively expand nested rules
         while "{" in result:
             for key in self.grammar_rules.keys():
                 placeholder = "{" + key + "}"
                 if placeholder in result:
-                    result = result.replace(placeholder, self._expand_grammar(key))
-            
-            # Replace basic placeholders
-            result = result.replace("{noun}", random.choice(self.nouns))
-            result = result.replace("{verb}", random.choice(self.verbs))
-            result = result.replace("{adj}", random.choice(self.adjectives))
-            result = result.replace("{adv}", random.choice(self.adverbs))
-        
+                    result = result.replace(placeholder, self._expand_grammar(key), 1)
+
+            # Replace basic placeholders one at a time to avoid repetition
+            result = result.replace("{noun}", random.choice(self.nouns), 1)
+            result = result.replace("{verb}", random.choice(self.verbs), 1)
+            result = result.replace("{adj}", random.choice(self.adjectives), 1)
+            result = result.replace("{adv}", random.choice(self.adverbs), 1)
+
         return result.capitalize()
     
     def generate_haiku(self) -> List[str]:
