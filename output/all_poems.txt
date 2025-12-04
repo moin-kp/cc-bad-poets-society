@@ -4,54 +4,54 @@ Bad Poets Society - Generated Poems Collection
 HAIKU 1 (haiku)
 ----------------------------------------
 Bright fear flows
-Ancient wind in wind
-Gentle love grows deeply
+Ancient wind in love
+Bright bird whispers quickly
 
 HAIKU 2 (haiku)
 ----------------------------------------
-Bright bird whispers
-Broken soul in soul
-Silent moon grows lightly
+Broken soul sleeps
+Silent moon in pain
+Deep song withers slowly
 
 QUATRAIN 1 (quatrain)
 ----------------------------------------
-The hard pain grows in the pain
-Where deep song withers and withers
-The warm heart rises gently
-And warm dream awakens in dream
+The warm heart rises in the dream
+Where wild night falls and blooms
+The wild song grows silently
+And shallow night grows in hope
 
 FREE VERSE 1 (free_verse)
 ----------------------------------------
-Cold flower
-Empty and empty, the ocean whispers
-Whole flower
-Fear of cold fear
-Pain sings lightly
-River sings quickly
+When night meets river
 The ocean burns
 Tree flies lightly
-
-FREE VERSE 2 (free_verse)
-----------------------------------------
 In the found pain
 Time sleeps brightly
 The ocean grows
 In the dark star
 The ocean sings
-When mountain meets mountain
+
+FREE VERSE 2 (free_verse)
+----------------------------------------
+When mountain meets flower
+Wind grows gently
+When memory meets tree
+The night whispers
+When heart meets flower
+Bright and deep, the ocean grows
 
 COUPLET 1 (couplet)
 ----------------------------------------
-The ancient flower burns in flower
-And whole dream sleeps darkly
+The shallow mountain flows in heart
+And broken shadow fades quickly
 
 GRAMMAR POEM 1 (grammar)
 ----------------------------------------
-When memory and memory, freezes in shadow
-Found flower that dances with bound time
-When young river, melts darkly
-In the whole tree, laughs slowly
+When the young dream, laughs slowly
 The gentle memory shines lightly
 The shallow time that melts with empty song
 The bright memory sings wildly
+The lost time that freezes like hard wind
+When bird and fear, sleeps with silent day
+In gentle song of time, sleeps silently
 
